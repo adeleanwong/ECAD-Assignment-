@@ -3,7 +3,7 @@
 $servername = 'localhost';
 $username = 'root';
 $userpwd = '';
-$dbname = 'mamaya'; 
+$dbname = 'giftany'; 
 
 // Create connection
 $conn = new mysqli($servername, $username, $userpwd, $dbname);
@@ -11,4 +11,3 @@ $conn = new mysqli($servername, $username, $userpwd, $dbname);
 if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);	
 }
-?>
