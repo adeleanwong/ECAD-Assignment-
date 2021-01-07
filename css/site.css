@@ -1,6 +1,6 @@
 body {
     font-family : Arial;
-    font-size : 14px;
+	font-size : 14px;
 }
 
 .page-title {
@@ -11,5 +11,11 @@ body {
 .cart-header {
 	/*background-color: #0040FF;*/
 	background-color: #017CA7;
+	color: white;
+}
+nav.navbar {
+	background-color: #ff9f1c;
+}
+a.nav-link{
 	color: white;
 }

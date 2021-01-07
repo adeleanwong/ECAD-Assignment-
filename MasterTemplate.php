@@ -8,18 +8,11 @@
 
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <linik rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="css/site.css">
 
 </head>
 <body>
-    <div class="container">
-    <!-- 1st row -->
-        <div class="row">
-            <div class="col-sm-12">
-                <a href="index.php">
-                    <img src="Images/replace.jfif" alt="Logo" class="img-fluid" style="width: 100%"/></a>
-            </div>
-        </div>
+    <div class="container-fluid">
     <!-- 2nd row -->
         <div class="row">
             <div class="col-sm-12">
@@ -28,13 +21,13 @@
         </div>
     <!-- 3rd row -->
         <div class="row">
-            <div class="col-sm-12" style="padding:15px;"> 
+            <div class="col-sm-12" style="padding:0 20%;"> 
                 <?php echo $MainContent; ?>
             </div>
         </div>
     <!-- 4th row -->
         <div class="row">
-            <div class="col-sm-12" style="text-align: right;">
+            <div class="col-sm-12" style="text-align: center;">
                 <hr>
                 Do you need help? Please email to:
                 <a href="mailto:giftany@np.edu.sg">giftany@np.edu.sg</a>
