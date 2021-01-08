@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Giftany & Co.</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="css/site.css">
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/site.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    
 
 </head>
 <body>
@@ -21,7 +23,7 @@
         </div>
     <!-- 3rd row -->
         <div class="row">
-            <div class="col-sm-12" style="padding:0 20%;"> 
+            <div class="col-sm-12"> 
                 <?php echo $MainContent; ?>
             </div>
         </div>
