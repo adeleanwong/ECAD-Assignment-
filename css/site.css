@@ -1,6 +1,25 @@
-body {
-    font-family : Arial;
-    font-size : 14px;
+
+a{
+	font-family: 'Roboto', sans-serif;
+	text-decoration: none;
+}
+a:active {
+	color: black;
+}
+.navbar h2{
+	color: #ec2828;
+}
+h2.brand{
+	font-family: 'Anton', sans-serif;
+	color:#e54c4c;
+	transition: 0.6s;
+	/* font-size: 50px; */
+}
+h2.brand:hover{
+	color:#ec2828;
+}
+img.home-img{
+	padding:0 20%;
 }
 
 .page-title {
@@ -11,5 +30,17 @@ body {
 .cart-header {
 	/*background-color: #0040FF;*/
 	background-color: #017CA7;
-	color: white;
+	color: #ec2828;
+}
+a.nav-link {
+	color:#e63232;
+	font-size: 15px;
+	margin: 0 10px;
+}
+a.nav-link:hover{
+	color: black;
+}
+div.form-container{
+	width:80%; 
+	margin:15% auto;
 }
