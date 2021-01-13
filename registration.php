@@ -13,17 +13,20 @@ $email = $_POST["email"];
 $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 $pwdQuestion = $_POST["pwdQuestion"];
 $pwdAnswer = $_POST["pwdAnswer"];
+$activeStatus = 0;
 
+$todaysDate = new DateTime('now');
+$dateEntered = $todaysDate->format('Y-m-d');
 
 // Include the PHP file that establishes database connection handle: $conn 
-include_once("../mysql_conn.php");
+include_once("mysql_conn.php");
 
 // Define the INSERT SQL statement
-$qry = "INSERT INTO Shopper (Name, BirthDate, Address, Country, Phone, Email, Password, PwdQuestion, PwdAnswer)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$qry = "INSERT INTO Shopper (Name, BirthDate, Address, Country, Phone, Email, Password, PwdQuestion, PwdAnswer, ActiveStatus, DateEntered)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($qry);
 // "ssssss" - 6 string parameters
-$stmt->bind_param("sssssssss", $name, $birthDate, $address, $country, $phone, $email, $password, $pwdQuestion, $pwdAnswer);
+$stmt->bind_param("sssssssssis", $name, $birthDate, $address, $country, $phone, $email, $password, $pwdQuestion, $pwdAnswer, $activeStatus, $dateEntered);
 
 if ($stmt->execute()) { // SQL statement executed successfully
     // Retrive the Shopper ID assigned t the new shopper
@@ -47,5 +50,5 @@ $stmt->close();
 // Close database connection 
 $conn->close();
 // Include the master template file for this page
-include ("../MasterTemplate.php");
+include ("MasterTemplate.php");
 ?>

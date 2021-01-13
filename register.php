@@ -48,7 +48,7 @@ $MainContent .= "</div>";
 $MainContent .= "<div class='form-group row'>";
 $MainContent .= "<label class='col-sm-3 col-form-label' for='birthDate'>Birth Date:</label>";
 $MainContent .= "<div class='col-sm-9'>";
-$MainContent .= "<input data-provide='datepicker' name='birthDate' id='birthDate' 
+$MainContent .= "<input type='date' name='birthDate' id='birthDate' 
                   required /> (required)";
 $MainContent .= "</div>";
 $MainContent .= "</div>";
@@ -102,6 +102,24 @@ $MainContent .= "<input class='form-control' name='password2' id='password2'
 $MainContent .= "</div>";
 $MainContent .= "</div>";
 
+$MainContent .= "<div class='form-group row'>";
+$MainContent .= "<label class='col-sm-3 col-form-label' for='pwdQuestion'>
+                 Password Question: </label>";
+$MainContent .= "<div class='col-sm-9'>";
+$MainContent .= "<input class='form-control' name='pwdQuestion' id='pwdQuestion' 
+                  type='text' placeholder='Password question that would help you recover your password.' required /> (required)";
+$MainContent .= "</div>";
+$MainContent .= "</div>";
+
+$MainContent .= "<div class='form-group row'>";
+$MainContent .= "<label class='col-sm-3 col-form-label' for='pwdAnswer'>
+                 Security Question: </label>";
+$MainContent .= "<div class='col-sm-9'>";
+$MainContent .= "<input class='form-control' name='pwdAnswer' id='pwdAnswer' 
+                  type='text' placeholder='Answer to your password question above.' required /> (required)";
+$MainContent .= "</div>";
+$MainContent .= "</div>";
+
 $MainContent .= "<div class='form-group row'>";       
 $MainContent .= "<div class='col-sm-9 offset-sm-3'>";
 $MainContent .= "<button type='submit'>Register</button>";
@@ -110,5 +128,5 @@ $MainContent .= "</div>";
 
 $MainContent .= "</form>";
 $MainContent .= "</div>";
-include("../MasterTemplate.php"); 
+include("MasterTemplate.php"); 
 ?>
