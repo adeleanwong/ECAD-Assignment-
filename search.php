@@ -13,13 +13,13 @@ $MainContent .= "</div>";
 $MainContent .= "</div>"; // End of 1st row
 $MainContent .= "<div class='form-group row'>"; // 2nd row
 $MainContent .= "<label for='keywords' 
-                  class='col-sm-3 col-form-label'>Product Title:</label>";
+                  class='col-sm-3 col-form-label'></label>";
 $MainContent .= "<div class='col-sm-6'>";
 $MainContent .= "<input class='form-control' name='keywords' id='keywords' 
-                  type='search' />";
+                  type='search' placeholder= 'Product Title'/>";
 $MainContent .= "</div>";
 $MainContent .= "<div class='col-sm-3'>";
-$MainContent .= "<button type='submit'>Search</button>";
+$MainContent .= "<button type='button' class='btn btn-danger'>Search</button>";
 $MainContent .= "</div>";
 $MainContent .= "</div>";  // End of 2nd row
 $MainContent .= "</form>";

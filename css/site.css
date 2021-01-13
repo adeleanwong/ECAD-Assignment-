@@ -44,3 +44,7 @@ div.form-container{
 	width:80%; 
 	margin:15% auto;
 }
+.container-fluid	{
+	padding-left: 0;
+	padding-right: 0;
+}

@@ -26,32 +26,31 @@ $stmt->execute();
 $result = $stmt->get_result();
 $stmt->close();
 
+$MainContent .= "<div class='card-deck flex-wrap justify-content-center'>";
+
 // display each product in a row 
 while ($row = $result->fetch_array())
 {
-    // start a new row 
-    $MainContent .= "<div class='row' style='padding:5px'>";
+    // start card
+    $MainContent .= "<div class='card flex-wrap' style='min-width:280px; max-width:280px; margin-bottom:10px;'>";
 
-    // left column - display a text link showing the product name 
-    // display the selling price in red in a new paragraph
+    // Product details
     $product = "productDetails.php?pid=$row[ProductID]";
     $formattedPrice = number_format($row["Price"], 2);
-    $MainContent .= "<div class='col-8'>"; //67% of row width
-    $MainContent .= "<p><a href=$product>$row[ProductTitle]</a></p>";
-    $MainContent .= "Price: <span style='font-weight: bold; color red;'>
-                        S$ $formattedPrice</span>";
-    $MainContent .= "</div>";
+    $img="./Images/products/$row[ProductImage]";
 
-    // Right column - display the category image 
-    $img ="./Images/products/$row[ProductImage]";
-    $MainContent .= "<div class='col-4'>";
-    $MainContent .= "<img src='$img'/>";
-    $MainContent .= "</div>";
-
-    // end of the row 
-    $MainContent .= "</div>";
+    // Content
+    $MainContent .= "<img class='card-img-top' src='$img' alt='Product Image'>"; 
+    $MainContent .= "<div class='card-body'>"; //67% of row width
+    $MainContent .= "<h5 class='cart-title'>$row[ProductTitle]</h5>";
+    $MainContent .= "<p class='card-text text-primary' style='font-size:1.2em'>Price: $ $formattedPrice</p>";
+    $MainContent .= "<a href='$product' class='btn btn-danger'>Product Details</a>";
+    $MainContent .= "</div>"; //end of card body 
+    $MainContent .= "</div>"; //end of card
 
 }
+$MainContent .= "</div>"; //end of card
+$MainContent .= "</div>"; //end of card
 
 // To Do:  Ending ....
 
