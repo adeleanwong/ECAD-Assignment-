@@ -30,6 +30,7 @@ $MainContent .= "<div class='form-group row'>";
 $MainContent .= "<div class='col-sm-9 offset-sm-3'>";
 $MainContent .= "<button type='submit'>Login</button>";
 $MainContent .= "<p>Please sign up if you do not have an account.</p>";
+$MainContent .= "<p> <a href='forgetPassword.php'>Forget Password?</a></p>";
 $MainContent .= "</div>";
 $MainContent .= "</div>";
 

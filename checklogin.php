@@ -20,8 +20,11 @@ $stmt->close();
 
 if ($result1->num_rows > 0){
 	$row1 = $result1->fetch_array();
+	// Get the hashed password from database
+	$hashed_pwd = $row1["Password"];
 
-	if ($pwd == $row1["Password"]){
+	// Verifies that a password matches a hash
+	if ((password_verify($pwd, $hashed_pwd) == true) || ($pwd == $row1["Password"])){ // has the OR condition because not all recorded passwords are hashed
 		 $checkLogin = TRUE;
 		 // Save user's info in session variables 
 		 $_SESSION["ShopperName"] = $row1["Name"];
@@ -52,6 +55,13 @@ if ($result1->num_rows > 0){
 	else{
 		$MainContent = "<h3 style='color:red'>Invalid Login Credentials - <br/>
 		password is incorrect!</h3>";
+
+		/* DEBUG
+		echo $hashed_pwd;
+		echo "<br>";
+		echo $pwd;
+		echo "<br>";
+		echo password_verify($pwd, $hashed_pwd); */
 	}
 }
 else {
