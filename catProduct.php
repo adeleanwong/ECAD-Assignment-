@@ -32,7 +32,7 @@ $MainContent .= "<div class='card-deck flex-wrap justify-content-center'>";
 while ($row = $result->fetch_array())
 {
     // start card
-    $MainContent .= "<div class='card flex-wrap' style='min-width:250px; max-width:250px; margin-bottom:10px;'>";
+    $MainContent .= "<div class='card flex-wrap' style='min-width:280px; max-width:280px; margin-bottom:10px;'>";
 
     // Product details
     $product = "productDetails.php?pid=$row[ProductID]";
