@@ -17,37 +17,32 @@ include_once("mysql_conn.php");
 // To Do:  Starting ....
 $qry = "SELECT * FROM Category";
 $result = $conn->query($qry);
+$MainContent .= "<div class='card-deck flex-wrap justify-content-center'>";
 // Display each cateogry in a row 
 while($row = $result->fetch_array())
 {
     // start a new row 
-    $MainContent .= "<div class='row' style='padding:5px'>";
-
-    // left column - display a text link showing the category's name,
-    // display category description in a new paragraph
-
+    $MainContent .= "<div class='card flex-wrap' style='min-width:300px; max-width:300px; margin-bottom:10px;'>";
     // what is the urlencode for
     $catname = urlencode($row["CatName"]);
-    // what is the catproduct for exactly, the link to the indiv product id
-    $catproduct = "catProduct.php?cid=$row[CategoryID]&catName=$catname"; 
-    $MainContent .= "<div class='col-8'>"; //67% of row width
-    $MainContent .= "<p><a href=$catproduct>$row[CatName]</a></p>";
-    $MainContent .= "$row[CatDesc]";
-    $MainContent .= "</div>";
-
-    // Right column - display the category image 
     $img ="./Images/category/$row[CatImage]";
-    $MainContent .= "<div class='col-4'>";
-    $MainContent .= "<img src='$img'/>";
-    $MainContent .= "</div>";
-
-    // end of the row 
-    $MainContent .= "</div>";
+    $catproduct = "catProduct.php?cid=$row[CategoryID]&catName=$catname"; 
+    // Content
+    $MainContent .= "<img class='card-img-top' src='$img' alt='Product Image'>"; 
+    $MainContent .= "<div class='card-body'>"; //67% of row width
+    $MainContent .= "<h5 class='justify-content-center'>$row[CatName]</h5>";
+    $MainContent .= "<p class='cart-title'>$row[CatDesc]</p>";
+    $MainContent .= "<a href='$catproduct' class='btn btn-danger'>Products</a>";
+    $MainContent .= "</div>"; //end of card body 
+    $MainContent .= "</div>"; //end of card
 
 
 
 
 }
+$MainContent .= "</div>";
+$MainContent .= "</div>";
+
 
 // To Do:  Ending ....
 
