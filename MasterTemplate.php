@@ -15,20 +15,27 @@
 </head>
 <body>
     <div class="container-fluid">
+    <!-- 1st row  -->
+    <div class="row no-gutters">
+        <div class="col-sm-12">
+                <a href="index.php">
+                    <img src="Images/replace.jfif" alt="Logo" class="img-fluid" style="width: 100%"/></a>
+            </div>
+    </div>
     <!-- 2nd row -->
-        <div class="row">
+        <div class="row no-gutters">
             <div class="col-sm-12">
                 <?php include("navbar.php"); ?>
             </div>
         </div>
     <!-- 3rd row -->
-        <div class="row">
+        <div class="row no-gutters">
             <div class="col-sm-12"> 
                 <?php echo $MainContent; ?>
             </div>
         </div>
     <!-- 4th row -->
-        <div class="row">
+        <div class="row no-gutters">
             <div class="col-sm-12" style="text-align: center;">
                 <hr>
                 Do you need help? Please email to:

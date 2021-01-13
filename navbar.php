@@ -29,7 +29,7 @@ if(isset($_SESSION["ShopperName"])) {
 <!-- To Do 3 (Practical 1) - 
      Display a navbar which is visible before or after collapsing -->
 
-<nav class="navbar navbar-expand-md">
+<nav class="navbar navbar-expand-md d-flex justify-content-center">
     <span class="navbar-text ml-md-2" style="color:white; max-width: 80%;">
         <?php echo $content1;?>
     </span>
@@ -40,7 +40,7 @@ if(isset($_SESSION["ShopperName"])) {
 </nav>
 <!-- To Do 4 (Practical 1) - 
      Define a collapsible navbar -->
-<nav class="navbar navbar-expand">
+<nav class="navbar navbar-expand ">
     <a href="index.php"><h2 class="brand">Giftany</h2></a>
     <div class="p-2 flex-grow-1 bd-highlight">
         <ul class="navbar-nav">
