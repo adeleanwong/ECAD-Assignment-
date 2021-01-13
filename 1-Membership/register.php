@@ -110,5 +110,5 @@ $MainContent .= "</div>";
 
 $MainContent .= "</form>";
 $MainContent .= "</div>";
-include("MasterTemplate.php"); 
+include("../MasterTemplate.php"); 
 ?>

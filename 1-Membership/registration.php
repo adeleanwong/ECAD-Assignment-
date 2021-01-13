@@ -10,13 +10,13 @@ $address = $_POST["address"];
 $country = $_POST["country"];
 $phone = $_POST["phone"];
 $email = $_POST["email"];
-$password = $_POST["password"];
+$password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 $pwdQuestion = $_POST["pwdQuestion"];
 $pwdAnswer = $_POST["pwdAnswer"];
 
 
 // Include the PHP file that establishes database connection handle: $conn 
-include_once("mysql_conn.php");
+include_once("../mysql_conn.php");
 
 // Define the INSERT SQL statement
 $qry = "INSERT INTO Shopper (Name, BirthDate, Address, Country, Phone, Email, Password, PwdQuestion, PwdAnswer)
@@ -47,5 +47,5 @@ $stmt->close();
 // Close database connection 
 $conn->close();
 // Include the master template file for this page
-include ("MasterTemplate.php");
+include ("../MasterTemplate.php");
 ?>
