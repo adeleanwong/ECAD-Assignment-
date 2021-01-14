@@ -15,8 +15,8 @@ $pwdQuestion = $_POST["pwdQuestion"];
 $pwdAnswer = $_POST["pwdAnswer"];
 $activeStatus = 0;
 
-$todaysDate = new DateTime('now');
-$dateEntered = $todaysDate->format('Y-m-d');
+$todaysDate = new DateTime('now', new DateTimeZone('Asia/Singapore'));
+$dateEntered = $todaysDate->format('Y-m-d\TH:i:s');
 
 // Include the PHP file that establishes database connection handle: $conn 
 include_once("mysql_conn.php");
