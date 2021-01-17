@@ -21,7 +21,6 @@ if(isset($_SESSION["ShopperName"])) {
     //Display number of item in cart
 	if (isset($_SESSION["NumCartItem"])){
         $content1 .= ", $_SESSION[NumCartItem] item(s) in shopping cart";
-        //$content1 .= ", $_SESSION[NumCartItem] item(s) in shopping cart";
 
     }
 }
