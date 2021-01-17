@@ -14,7 +14,7 @@ $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 $pwdQuestion = $_POST["pwdQuestion"];
 $pwdAnswer = $_POST["pwdAnswer"];
 $activeStatus = 0;
-
+//setting timezone to singapore, date format is year/month/date (following database)
 $todaysDate = new DateTime('now', new DateTimeZone('Asia/Singapore'));
 $dateEntered = $todaysDate->format('Y-m-d\TH:i:s');
 

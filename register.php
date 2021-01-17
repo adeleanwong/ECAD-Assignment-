@@ -221,6 +221,6 @@ function checkEmail(){
 
 $(document).ready(function(){
     console.log("Setting interval");
-    setInterval(checkEmail, 1000);
+    setInterval(checkEmail, 500);
 }); 
 </script>
