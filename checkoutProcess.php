@@ -17,7 +17,7 @@ if($_POST) //Post Data received from Shopping cart page.
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$row = $result->fetch_array();
-		if($row["Quantity"]>$item['quantity']){
+		if($row["Quantity"]<$item['quantity']){
 			$MainContent .= "Product $item[productId] : $item[name] is out of stock! <br />";
 			$MainContent .= "Please return to shopping cart to amend your purchase<br />";
 			include("MasterTemplate.php");
