@@ -13,7 +13,7 @@ if(isset($_SESSION["ShopperName"])) {
     //after shopper has logged in.
     $content1 = "<h2>Welcome <b> $_SESSION[ShopperName]</b></h2>";
     $content2 = "<li class='nav-item'>
-                <a class='nav-link' href='changePassword.php'>Change Password</a></li>
+                <a class='nav-link' href='profile.php'>Edit Profile</a></li>
                 <li class='nav-item'>
                 <a class='nav-link' href='logout.php'>Logout</a></li>";
 
@@ -21,7 +21,6 @@ if(isset($_SESSION["ShopperName"])) {
     //Display number of item in cart
 	if (isset($_SESSION["NumCartItem"])){
         $content1 .= ", $_SESSION[NumCartItem] item(s) in shopping cart";
-        //$content1 .= ", $_SESSION[NumCartItem] item(s) in shopping cart";
 
     }
 }
