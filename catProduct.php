@@ -5,9 +5,9 @@ session_start();
 $MainContent = "<div style='width:60%; margin:auto;'>";
 // Display Page Header - 
 // Category's name is read from query string passed from previous page.
-$MainContent .= "<div class='row' style='padding:5px'>";
-$MainContent .= "<div class='col-12'>";
-$MainContent .= "<span class='page-title'>$_GET[catName]</span>";
+$MainContent .= "<div class='row' style='padding:15px'>";
+$MainContent .= "<div class='col-12 '>";
+$MainContent .= "<span class='page-title style='padding:50px'>$_GET[catName]</span>";
 $MainContent .= "</div>";
 $MainContent .= "</div>";
 
