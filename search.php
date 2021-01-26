@@ -19,7 +19,7 @@ $MainContent .= "<input class='form-control' name='keywords' id='keywords'
                   type='search' placeholder= 'Product Title'/>";
 $MainContent .= "</div>";
 $MainContent .= "<div class='col-sm-3'>";
-$MainContent .= "<button type='button' class='btn btn-danger'>Search</button>";
+$MainContent .= "<button type='submit' class='btn btn-danger'>Search</button>";
 $MainContent .= "</div>";
 $MainContent .= "</div>";  // End of 2nd row
 $MainContent .= "</form>";
