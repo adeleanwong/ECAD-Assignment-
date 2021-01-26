@@ -4,6 +4,7 @@ include_once("mypaypal.php");
 include_once("mysql_conn.php");
 $MainContent = "";
 
+
 if($_POST) //Post Data received from Shopping cart page.
 {
 	// To Do 6 (DIY): Check to ensure each product item saved in the associative
