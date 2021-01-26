@@ -19,7 +19,7 @@
     <div class="row no-gutters">
         <div class="col-sm-12">
                 <a href="index.php">
-                    <img src="Images/replace.png" alt="Logo" class="img-fluid" style="width: 100%"/></a>
+                    <img src="Images/original1.png" alt="Logo" class="img-fluid" style="width: 100%"/></a>
             </div>
     </div>
     <!-- 2nd row -->
