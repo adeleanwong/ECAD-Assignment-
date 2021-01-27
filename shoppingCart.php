@@ -41,6 +41,7 @@ if (isset($_SESSION["Cart"])) {
 		// To Do 3 (Practical 4): 
 		// Display the shopping cart content
 		$subTotal = 0; // Declare a variable to compute subtotal before tax
+		$totalQuantity = 0;
 		$MainContent .= "<tbody>";
 		while ($row = $result->fetch_array()) {
 			$MainContent.="<tr>";
@@ -88,6 +89,7 @@ if (isset($_SESSION["Cart"])) {
 			
 			// Accumulate the running sub-total
 			$subTotal += $row["Total"];
+			$totalQuantity += $row["Quantity"];
 		}
 		$MainContent .= "</tbody>";
 		$MainContent .= "</table>";
@@ -95,6 +97,7 @@ if (isset($_SESSION["Cart"])) {
 				
 		// To Do 4 (Practical 4): 
 		// Display the subtotal at the end of the shopping cart
+		$MainContent.= "<p style='text-align:right; font-size:20px'> Total item: ".number_format($totalQuantity);
 		$MainContent.= "<p style='text-align:right; font-size:20px'> SubTotal= S$".number_format($subTotal,2);
 		$_SESSION["SubTotal"]=round($subTotal,2);
 		
