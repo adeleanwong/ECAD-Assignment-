@@ -24,6 +24,8 @@ $MainContent .= "</div>";
 $MainContent .= "</div>";  // End of 2nd row
 $MainContent .= "</form>";
 
+
+
 // The search keyword is sent to server
 if (isset($_GET['keywords'])) {
 	$SearchText=$_GET["keywords"];
@@ -32,10 +34,10 @@ if (isset($_GET['keywords'])) {
     // To Do (DIY): Retrieve list of product records with "ProductTitle" 
     // contains the keyword entered by shopper, and display them in a table.
         include_once("mysql_conn.php");
+        $MainContent .= "<b><tr><th>Search results for $_GET[keywords]:</th></tr></b>";
         $MainContent .= "</p><table>";
-        $MainContent .= "<tr><th>Search results for $_GET[keywords]:</th></tr>";
-    
-        $qry = "SELECT ProductID, ProductTitle FROM product 
+        $MainContent .= "<div class='card-deck flex-wrap justify-content-center'>";
+        $qry = "SELECT ProductID, ProductTitle, ProductImage, Price, Quantity FROM product 
                 WHERE ProductTitle LIKE ? OR ProductDesc LIKE ?";
         $stmt = $conn->prepare($qry);
         $stmt->bind_param("ss", $Search, $Search); // "s" - string
@@ -46,12 +48,23 @@ if (isset($_GET['keywords'])) {
     
         if ($result->num_rows > 0) { 
             
-                while($row = $result->fetch_array())
-                { 
-                    $product =  "productDetails.php?pid=$row[ProductID]";
-                    $MainContent .= "<tr><td><a href=$product>$row[ProductTitle]</a><td></tr><br />";
-           
-                }
+            while($row = $result->fetch_array())
+            { 
+                 // start card
+                $MainContent .= "<div class='card' style='min-width:280px; max-width:280px; margin-bottom:10px;'>";
+                $product =  "productDetails.php?pid=$row[ProductID]";
+                $formattedPrice = number_format($row["Price"], 2);
+                $img="./Images/products/$row[ProductImage]";
+                // Content
+                $MainContent .= "<img class='card-img-top' src='$img' alt='Product Image'>"; 
+                $MainContent .= "<div class='card-body'>"; //67% of row width
+                $MainContent .= "<h5 class='cart-title'>$row[ProductTitle]</h5>";
+                $MainContent .= "<p class='card-text text-primary' style='font-size:1.2em'>Price: $ $formattedPrice</p>";
+                $MainContent .= "<a href='$product' class='btn btn-danger'>Product Details</a>";
+                $MainContent .= "</div>"; //end of body card
+                $MainContent .= "</div>"; //end of card  
+
+            }
         }
         else {
             $MainContent .= "No record found";
@@ -61,6 +74,7 @@ if (isset($_GET['keywords'])) {
         
 }
 
+$MainContent .= "</div>"; // End of Card
 $MainContent .= "</div>"; // End of Container
 include("MasterTemplate.php");
 ?>
