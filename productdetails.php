@@ -13,6 +13,7 @@ $stmt->bind_param("i", $pid); 	// "i" - integer
 $stmt->execute();
 $result = $stmt->get_result();
 $stmt->close();
+$cartBtn= "<button type='submit' class='btn btn-danger'> Add to Cart</button>";
 
 // To Do 1:  Display Product information. Starting ....
 while($row = $result->fetch_array())
@@ -29,6 +30,11 @@ while($row = $result->fetch_array())
     // left column - display the product's description 
     $MainContent .= "<div class='col-sm-9' style='padding:5px'>";
     $MainContent .= "<p>$row[ProductDesc]</p>";
+
+    if($row["Quantity"]<1){
+        $MainContent .="<h3>Out of Stock !</h3>";
+        $cartBtn ="<button type='submit' class='btn btn-danger' disabled>Add to Cart</p>";
+    }
 
     // Left column - display the product's Specification 
     $qry = "SELECT s.SpecName, ps.SpecVal from productspec ps
@@ -64,7 +70,7 @@ $MainContent .="<input type='hidden' name='action' value='add'/>";
 $MainContent .="<input type='hidden' name='product_id' value='$pid'/>";
 $MainContent .="Quantity: <input type='number' name='quantity' value='1' 
                 min='1' max='10' style='width:40px' required />";
-$MainContent .="<button type='submit' >Add to Cart</submit>";
+$MainContent .=$cartBtn;
 $MainContent .="</form>";
 $MainContent .="</div>";
 $MainContent .="</div>";
