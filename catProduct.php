@@ -17,7 +17,7 @@ include_once("mysql_conn.php");
 // To Do:  Starting ....
 $cid = $_GET["cid"]; //Read category ID from query string
 // form SQL to retrieve list of products associated to the category ID
-$qry = "SELECT p.ProductID, p.ProductTitle, p.ProductImage, p.Price, p.Quantity
+$qry = "SELECT p.ProductID, p.ProductTitle, p.ProductImage, p.Price, p.Quantity, p.Offered, p.OfferedPrice
         FROM CatProduct cp INNER JOIN product p ON cp.ProductID = p.ProductID
         WHERE cp.CategoryID=?" ;
 $stmt = $conn->prepare($qry);
@@ -37,17 +37,35 @@ while ($row = $result->fetch_array())
     // Product details
     $product = "productDetails.php?pid=$row[ProductID]";
     $formattedPrice = number_format($row["Price"], 2);
+    $offeredPrice = number_format($row["OfferedPrice"], 2);
     $img="./Images/products/$row[ProductImage]";
-
+    $offer="productDetails.php?";
     // Content
+    if($row["Offered"]==1){
+    $MainContent .= "<h2 style='color:#e63232;'>On offer</h2>"; //67% of row width
     $MainContent .= "<img class='card-img-top' src='$img' alt='Product Image'>"; 
     $MainContent .= "<div class='card-body'>"; //67% of row width
     $MainContent .= "<h5 class='cart-title'>$row[ProductTitle]</h5>";
-    $MainContent .= "<p class='card-text text-primary' style='font-size:1.2em'>Price: $ $formattedPrice</p>";
+    $MainContent .= "<p class='card-text text-primary' style='font-size:1.2em;'><del style='opacity:0.5;'>$formattedPrice</del>$ $offeredPrice</p>";
     $MainContent .= "<a href='$product' class='btn btn-danger'>Product Details</a>";
     $MainContent .= "</div>"; //end of card body 
     $MainContent .= "</div>"; //end of card
 
+    }
+    else{
+    $MainContent .= "<h2 style=' visibility: hidden;'>Not on Offer</h2>"; //67% of row width
+
+    $MainContent .= "<img class='card-img-top' src='$img' alt='Product Image'>"; 
+    $MainContent .= "<div class='card-body'>"; //67% of row width
+    $MainContent .= "<h5 class='cart-title'>$row[ProductTitle]</h5>";
+    
+    $MainContent .= "<p class='card-text text-primary' style='font-size:1.2em'>$ $formattedPrice</p>";
+    $MainContent .= "<a href='$product' class='btn btn-danger'>Product Details</a>";
+    $MainContent .= "</div>"; //end of card body 
+    $MainContent .= "</div>"; //end of card
+
+    }
+    
 }
 $MainContent .= "</div>"; //end of card
 $MainContent .= "</div>"; //end of card

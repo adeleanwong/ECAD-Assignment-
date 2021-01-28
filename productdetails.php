@@ -19,12 +19,22 @@ $cartBtn= "<button type='submit' class='btn btn-danger'> Add to Cart</button>";
 while($row = $result->fetch_array())
 {
     // Display Page Header
-    // Product's name is read from teh "ProductTitle" solumn of "Product" tabl
-    $MainContent .= "<div class='row'>";
-    $MainContent .= "<div class='col-sm-12' style='padding:5px'>";
-    $MainContent .= "<span class='page-title'>$row[ProductTitle]</span>";
-    $MainContent .= "</div>";
-    $MainContent .= "</div>";
+    // Product's name is read from teh "ProductTitle" solumn of "Product" table
+    if($row["Offered"]==1){
+        $MainContent .= "<h2 style='color:#e63232;'>On offer</h2>";
+        $MainContent .= "<div class='row'>";
+        $MainContent .= "<div class='col-sm-12' style='padding:5px'>";
+        $MainContent .= "<span class='page-title'>$row[ProductTitle]</span>";
+        $MainContent .= "</div>";
+        $MainContent .= "</div>";
+    }
+    else{
+        $MainContent .= "<div class='row'>";
+        $MainContent .= "<div class='col-sm-12' style='padding:5px'>";
+        $MainContent .= "<span class='page-title'>$row[ProductTitle]</span>";
+        $MainContent .= "</div>";
+        $MainContent .= "</div>";
+    }
     // start a new row 
     $MainContent .= "<div class='row'>";
     // left column - display the product's description 
@@ -55,11 +65,18 @@ while($row = $result->fetch_array())
     $img = "./Images/products/$row[ProductImage]";
     $MainContent .="<div class='col-sm-3' style='vertical-align:top; padding:5px'>";
     $MainContent .= "<p><img src='$img'/></p>";
-
     // right column - display the product's price
     $formattedPrice = number_format($row["Price"], 2);
-    $MainContent .="Price:<span style='font-weight:bold; color:red;'>
-                    S$ $formattedPrice</span>" ;
+    $offeredPrice = number_format($row["OfferedPrice"], 2);
+    if($row["Offered"]==1){
+        $MainContent .="Price:<span style='font-size:1.2em; font-weight:bold; color:red;'>
+        <del style='font-size:0.8em; opacity:0.5;'>$formattedPrice</del>S$ $offeredPrice</span>" ;
+    }
+    else{
+        $MainContent .="Price:<span style='font-size:1.2em; font-weight:bold; color:red;'>
+        S$ $formattedPrice</span>" ;
+    }
+    
 }
 
 // To Do 1:  Ending ....
