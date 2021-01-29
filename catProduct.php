@@ -6,7 +6,7 @@ $MainContent = "<div style='width:60%; margin:auto;'>";
 // Display Page Header - 
 // Category's name is read from query string passed from previous page.
 $MainContent .= "<div class='row' style='padding:15px'>";
-$MainContent .= "<div class='col-12 '>";
+$MainContent .= "<div class='col-12 ' style='text-align: center;'>";
 $MainContent .= "<span class='page-title style='padding:50px'>$_GET[catName]</span>";
 $MainContent .= "</div>";
 $MainContent .= "</div>";
@@ -19,7 +19,7 @@ $cid = $_GET["cid"]; //Read category ID from query string
 // form SQL to retrieve list of products associated to the category ID
 $qry = "SELECT p.ProductID, p.ProductTitle, p.ProductImage, p.Price, p.Quantity, p.Offered, p.OfferedPrice
         FROM CatProduct cp INNER JOIN product p ON cp.ProductID = p.ProductID
-        WHERE cp.CategoryID=?" ;
+        WHERE cp.CategoryID=?";
 $stmt = $conn->prepare($qry);
 $stmt->bind_param("i", $cid);
 $stmt->execute();
@@ -42,9 +42,9 @@ while ($row = $result->fetch_array())
     $offer="productDetails.php?";
     // Content
     if($row["Offered"]==1){
-    $MainContent .= "<h2 style='color:#e63232;'>On offer</h2>"; //67% of row width
+    $MainContent .= "<h2 style='color:#e63232; text-align: center;'>On offer</h2>"; //67% of row width
     $MainContent .= "<img class='card-img-top' src='$img' alt='Product Image'>"; 
-    $MainContent .= "<div class='card-body'>"; //67% of row width
+    $MainContent .= "<div class='card-body' style='text-align: center;'>"; //67% of row width
     $MainContent .= "<h5 class='cart-title'>$row[ProductTitle]</h5>";
     $MainContent .= "<p class='card-text text-primary' style='font-size:1.2em;'><del style='opacity:0.5;'>$formattedPrice</del>$ $offeredPrice</p>";
     $MainContent .= "<a href='$product' class='btn btn-danger'>Product Details</a>";
@@ -56,7 +56,7 @@ while ($row = $result->fetch_array())
     $MainContent .= "<h2 style=' visibility: hidden;'>Not on Offer</h2>"; //67% of row width
 
     $MainContent .= "<img class='card-img-top' src='$img' alt='Product Image'>"; 
-    $MainContent .= "<div class='card-body'>"; //67% of row width
+    $MainContent .= "<div class='card-body' style='text-align: center;'>"; //67% of row width
     $MainContent .= "<h5 class='cart-title'>$row[ProductTitle]</h5>";
     
     $MainContent .= "<p class='card-text text-primary' style='font-size:1.2em'>$ $formattedPrice</p>";

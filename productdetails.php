@@ -14,31 +14,26 @@ $stmt->execute();
 $result = $stmt->get_result();
 $stmt->close();
 $cartBtn= "<button type='submit' class='btn btn-danger'> Add to Cart</button>";
+$MainContent .= "<div class='card'>";
 
 // To Do 1:  Display Product information. Starting ....
 while($row = $result->fetch_array())
 {
-    // Display Page Header
-    // Product's name is read from teh "ProductTitle" solumn of "Product" table
-    if($row["Offered"]==1){
-        $MainContent .= "<h2 style='color:#e63232;'>On offer</h2>";
-        $MainContent .= "<div class='row'>";
-        $MainContent .= "<div class='col-sm-12' style='padding:5px'>";
-        $MainContent .= "<span class='page-title'>$row[ProductTitle]</span>";
-        $MainContent .= "</div>";
-        $MainContent .= "</div>";
-    }
-    else{
-        $MainContent .= "<div class='row'>";
-        $MainContent .= "<div class='col-sm-12' style='padding:5px'>";
-        $MainContent .= "<span class='page-title'>$row[ProductTitle]</span>";
-        $MainContent .= "</div>";
-        $MainContent .= "</div>";
-    }
+    $MainContent .= "<div class='card-header'>";
+    $MainContent .= "<span class='page-title'>$row[ProductTitle]</span>";
+    $MainContent .= "</div>";
+    
     // start a new row 
     $MainContent .= "<div class='row'>";
     // left column - display the product's description 
-    $MainContent .= "<div class='col-sm-9' style='padding:5px'>";
+    $MainContent .= "<div class='card-body' style='margin:1.45rem;'>";
+    // display the product's image
+    $img = "./Images/products/$row[ProductImage]";
+    $MainContent .= "<p><img src='$img'/></p>";
+    // Product's if on offer
+    if($row["Offered"]==1){
+        $MainContent .= "<h5 class='card-title' style='font-weight:bold; color:red;'>On Offer</h5>";    
+    }
     $MainContent .= "<p>$row[ProductDesc]</p>";
 
     if($row["Quantity"]<1){
@@ -59,13 +54,10 @@ while($row = $result->fetch_array())
     while($row2=$result2->fetch_array()){
         $MainContent .=$row2["SpecName"].":".$row2["SpecVal"]."<br />";
     }
-    $MainContent .= "</div>";
+    
 
-    // right column - display the product's image
-    $img = "./Images/products/$row[ProductImage]";
-    $MainContent .="<div class='col-sm-3' style='vertical-align:top; padding:5px'>";
-    $MainContent .= "<p><img src='$img'/></p>";
-    // right column - display the product's price
+
+    // display the product's price
     $formattedPrice = number_format($row["Price"], 2);
     $offeredPrice = number_format($row["OfferedPrice"], 2);
     if($row["Offered"]==1){
@@ -76,6 +68,7 @@ while($row = $result->fetch_array())
         $MainContent .="Price:<span style='font-size:1.2em; font-weight:bold; color:red;'>
         S$ $formattedPrice</span>" ;
     }
+    
     
 }
 
@@ -91,6 +84,9 @@ $MainContent .=$cartBtn;
 $MainContent .="</form>";
 $MainContent .="</div>";
 $MainContent .="</div>";
+$MainContent .= "</div>";
+
+$MainContent .="</div>"; // end of card
 
 
 
