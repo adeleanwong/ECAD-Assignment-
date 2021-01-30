@@ -40,7 +40,7 @@ if (isset($_SESSION["Cart"])) {
 		$_SESSION["Items"]=array();
 		// To Do 3 (Practical 4): 
 		// Display the shopping cart content
-		$subTotal = 0; // Declare a variable to compute subtotal before tax
+		$Total = 0; // Declare a variable to compute subtotal before tax
 		$totalQuantity = 0;
 		$MainContent .= "<tbody>";
 		while ($row = $result->fetch_array()) {
@@ -88,7 +88,7 @@ if (isset($_SESSION["Cart"])) {
 		);
 			
 			// Accumulate the running sub-total
-			$subTotal += $row["Total"];
+			$Total += $row["Total"];
 			$totalQuantity += $row["Quantity"];
 		}
 		$MainContent .= "</tbody>";
@@ -115,14 +115,27 @@ if (isset($_SESSION["Cart"])) {
 		}
 		$MainContent .= "</form>";
 
+		$_SESSION["SubTotal"]=round($Total,2); //Calculate total price of items before shipping and tax
+
 		// To Do 4 (Practical 4): 
 		// Display the subtotal at the end of the shopping cart
+
+		$qry="SELECT * From gst ORDER BY EffectiveDate DESC";
+		$stmt =$conn->prepare($qry);
+		$stmt->execute();
+		$result2=$stmt->get_result();
+		$stmt->close();
+		$row2 = $result2->fetch_array();
+		$gst= $row2["TaxRate"] / 100;
+		$_SESSION["Tax"] = round($_SESSION["SubTotal"]*$gst, 2); 
+
+		
 		$MainContent.= "<p style='text-align:right; font-size:20px'> Total item: ".number_format($totalQuantity);
-		$MainContent.= "<p style='text-align:right; font-size:20px'> SubTotal= S$".number_format($subTotal,2);
-		$MainContent.= "<p style='text-align:right; font-size:20px'> Shipping Charge= S$".number_format($_SESSION["ShipCharge"],2);
-		$Total = $subTotal + $_SESSION["ShipCharge"];
-		$_SESSION["SubTotal"]=round($subTotal,2);
 		$MainContent.= "<p style='text-align:right; font-size:20px'> Total= S$".number_format($Total,2);
+		$MainContent.= "<p style='text-align:right; font-size:20px'> GST= S$ ".number_format($_SESSION["Tax"], 2);
+		$MainContent.= "<p style='text-align:right; font-size:20px'> Shipping Charge= S$".number_format($_SESSION["ShipCharge"],2);
+		$subTotal = $Total + $_SESSION["ShipCharge"] + $_SESSION["Tax"];
+		$MainContent.= "<p style='text-align:right; font-size:20px'> SubTotal= S$".number_format($subTotal,2);
 
 		
 		// To Do 7 (Practical 5):
