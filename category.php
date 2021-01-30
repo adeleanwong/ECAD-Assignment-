@@ -32,8 +32,10 @@ while($row = $result->fetch_array())
     $MainContent .= "<div class='card-body' style='text-align: center;'>"; //67% of row width
     $MainContent .= "<h5 class='justify-content-center'>$row[CatName]</h5>";
     $MainContent .= "<p class='cart-title'>$row[CatDesc]</p>";
-    $MainContent .= "<a href='$catproduct' class='btn btn-danger'>Products</a>";
     $MainContent .= "</div>"; //end of card body 
+    $MainContent .= "<div class='card-footer' style='background-color:white; text-align:center'>"; //67% of row width
+    $MainContent .= "<a href='$catproduct' class='btn btn-danger'>Products</a>";
+    $MainContent .= "</div>"; //end of card footer 
     $MainContent .= "</div>"; //end of card
 
 
