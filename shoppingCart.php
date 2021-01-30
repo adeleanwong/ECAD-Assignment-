@@ -98,7 +98,13 @@ if (isset($_SESSION["Cart"])) {
 		//Delivery Type
 		$MainContent .= "<form onchange='this.submit()' action='cartFunctions.php' method='post'>";
 		$MainContent .= "<input type='hidden' name='action' value='deliveryOption' />";
-		if (isset($_SESSION["ShipCharge"])) {
+
+		if($Total>200){
+			$MainContent .= "<input type='radio' name ='delivery' value ='Normal' >Normal (2 Days) ";
+					$MainContent .= "<input type='radio' name ='delivery' value ='Express' checked >Express (24 Hours) ";
+		}
+		else{
+			if (isset($_SESSION["ShipCharge"])) {
 				if (($_SESSION["ShipCharge"]) == 5){
 					$MainContent .= "<input type='radio' name ='delivery' value ='Normal' checked >Normal (2 Days) ";
 					$MainContent .= "<input type='radio' name ='delivery' value ='Express' >Express (24 Hours) ";
@@ -107,12 +113,14 @@ if (isset($_SESSION["Cart"])) {
 					$MainContent .= "<input type='radio' name ='delivery' value ='Normal' >Normal (2 Days) ";
 					$MainContent .= "<input type='radio' name ='delivery' value ='Express' checked >Express (24 Hours) ";
 				}
+			}
+			else {
+				$_SESSION["ShipCharge"] = 5;
+				$MainContent .= "<input type='radio' name ='delivery' value ='Normal' checked>Normal (2 Days)";
+				$MainContent .= "<input type='radio' name ='delivery' value ='Express' >Express (24 Hours) ";
+			}
 		}
-		else {
-			$_SESSION["ShipCharge"] = 5;
-			$MainContent .= "<input type='radio' name ='delivery' value ='Normal' checked>Normal (2 Days)";
-			$MainContent .= "<input type='radio' name ='delivery' value ='Express' >Express (24 Hours) ";
-		}
+		
 		$MainContent .= "</form>";
 
 		$_SESSION["SubTotal"]=round($Total,2); //Calculate total price of items before shipping and tax
@@ -134,7 +142,7 @@ if (isset($_SESSION["Cart"])) {
 		$MainContent.= "<p style='text-align:right; font-size:20px'> Total= S$".number_format($Total,2);
 		$MainContent.= "<p style='text-align:right; font-size:20px'> GST= S$ ".number_format($_SESSION["Tax"], 2);
 
-		if ($_SESSION["Total"]>200){
+		if ($Total<200){
 			
 			$MainContent.= "<p style='text-align:right; font-size:20px'> Shipping Charge= S$".number_format($_SESSION["ShipCharge"],2);
 			$subTotal = $Total + $_SESSION["ShipCharge"] + $_SESSION["Tax"];
