@@ -11,7 +11,10 @@ if (isset($_POST['action'])) {
             break;
 		case 'remove':
             removeItem();
-            break;
+			break;
+		case 'deliveryOption':
+			deliveryOption();
+			break;
     }
 }
 
@@ -140,5 +143,20 @@ function removeItem() {
 	$_SESSION["NumCartItem"]=$_SESSION["NumCartItem"]-1;
 	exit;
 	
-}		
+}
+
+function deliveryOption(){
+	if ($_POST["delivery"] == 'Normal'){
+		$_SESSION["Delivery"] = "Normal";
+		$_SESSION["ShipCharge"] = 5;
+	}
+	else{
+		$_SESSION["Delivery"] = "Express";
+		$_SESSION["ShipCharge"] = 10;
+
+	}
+
+	header ("Location: shoppingCart.php");
+	exit;
+}
 ?>

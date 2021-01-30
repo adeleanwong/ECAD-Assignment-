@@ -95,12 +95,35 @@ if (isset($_SESSION["Cart"])) {
 		$MainContent .= "</table>";
 		$MainContent .= "</div>";
 				
+		//Delivery Type
+		$MainContent .= "<form onchange='this.submit()' action='cartFunctions.php' method='post'>";
+		$MainContent .= "<input type='hidden' name='action' value='deliveryOption' />";
+		if (isset($_SESSION["ShipCharge"])) {
+			if (($_SESSION["ShipCharge"]) == 5){
+				$MainContent .= "<input type='radio' name ='delivery' value ='Normal' checked>Normal";
+				$MainContent .= "<input type='radio' name ='delivery' value ='Express' >Express";
+			}
+			else {
+				$MainContent .= "<input type='radio' name ='delivery' value ='Normal' >Normal";
+				$MainContent .= "<input type='radio' name ='delivery' value ='Express' checked>Express";
+			}
+		}
+		else {
+			$_SESSION["ShipCharge"] = 5;
+			$MainContent .= "<input type='radio' name ='delivery' value ='Normal' checked>Normal";
+			$MainContent .= "<input type='radio' name ='delivery' value ='Express' >Express";
+		}
+		$MainContent .= "</form>";
+
 		// To Do 4 (Practical 4): 
 		// Display the subtotal at the end of the shopping cart
 		$MainContent.= "<p style='text-align:right; font-size:20px'> Total item: ".number_format($totalQuantity);
 		$MainContent.= "<p style='text-align:right; font-size:20px'> SubTotal= S$".number_format($subTotal,2);
+		$MainContent.= "<p style='text-align:right; font-size:20px'> Shipping Charge= S$".number_format($_SESSION["ShipCharge"],2);
+		$Total = $subTotal + $_SESSION["ShipCharge"];
 		$_SESSION["SubTotal"]=round($subTotal,2);
-		
+		$MainContent.= "<p style='text-align:right; font-size:20px'> Total= S$".number_format($Total,2);
+
 		
 		// To Do 7 (Practical 5):
 		// Add PayPal Checkout button on the shopping cart page
