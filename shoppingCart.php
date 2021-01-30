@@ -99,19 +99,19 @@ if (isset($_SESSION["Cart"])) {
 		$MainContent .= "<form onchange='this.submit()' action='cartFunctions.php' method='post'>";
 		$MainContent .= "<input type='hidden' name='action' value='deliveryOption' />";
 		if (isset($_SESSION["ShipCharge"])) {
-			if (($_SESSION["ShipCharge"]) == 5){
-				$MainContent .= "<input type='radio' name ='delivery' value ='Normal' checked>Normal";
-				$MainContent .= "<input type='radio' name ='delivery' value ='Express' >Express";
-			}
-			else {
-				$MainContent .= "<input type='radio' name ='delivery' value ='Normal' >Normal";
-				$MainContent .= "<input type='radio' name ='delivery' value ='Express' checked>Express";
-			}
+				if (($_SESSION["ShipCharge"]) == 5){
+					$MainContent .= "<input type='radio' name ='delivery' value ='Normal' checked >Normal (2 Days) ";
+					$MainContent .= "<input type='radio' name ='delivery' value ='Express' >Express (24 Hours) ";
+				}
+				else {
+					$MainContent .= "<input type='radio' name ='delivery' value ='Normal' >Normal (2 Days) ";
+					$MainContent .= "<input type='radio' name ='delivery' value ='Express' checked >Express (24 Hours) ";
+				}
 		}
 		else {
 			$_SESSION["ShipCharge"] = 5;
-			$MainContent .= "<input type='radio' name ='delivery' value ='Normal' checked>Normal";
-			$MainContent .= "<input type='radio' name ='delivery' value ='Express' >Express";
+			$MainContent .= "<input type='radio' name ='delivery' value ='Normal' checked>Normal (2 Days)";
+			$MainContent .= "<input type='radio' name ='delivery' value ='Express' >Express (24 Hours) ";
 		}
 		$MainContent .= "</form>";
 
