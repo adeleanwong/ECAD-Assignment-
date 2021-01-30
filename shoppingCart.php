@@ -133,11 +133,18 @@ if (isset($_SESSION["Cart"])) {
 		$MainContent.= "<p style='text-align:right; font-size:20px'> Total item: ".number_format($totalQuantity);
 		$MainContent.= "<p style='text-align:right; font-size:20px'> Total= S$".number_format($Total,2);
 		$MainContent.= "<p style='text-align:right; font-size:20px'> GST= S$ ".number_format($_SESSION["Tax"], 2);
-		$MainContent.= "<p style='text-align:right; font-size:20px'> Shipping Charge= S$".number_format($_SESSION["ShipCharge"],2);
-		$subTotal = $Total + $_SESSION["ShipCharge"] + $_SESSION["Tax"];
-		$MainContent.= "<p style='text-align:right; font-size:20px'> SubTotal= S$".number_format($subTotal,2);
 
-		
+		if ($_SESSION["Total"]>200){
+			
+			$MainContent.= "<p style='text-align:right; font-size:20px'> Shipping Charge= S$".number_format($_SESSION["ShipCharge"],2);
+			$subTotal = $Total + $_SESSION["ShipCharge"] + $_SESSION["Tax"];
+			$MainContent.= "<p style='text-align:right; font-size:20px'> SubTotal= S$".number_format($subTotal,2);
+		}
+		else{
+			$MainContent.= "<p style='text-align:right; font-size:20px'> Shipping Charge= S$ Free";
+			$subTotal = $Total + $_SESSION["Tax"];
+			$MainContent.= "<p style='text-align:right; font-size:20px'> SubTotal= S$".number_format($subTotal,2);
+		}
 		// To Do 7 (Practical 5):
 		// Add PayPal Checkout button on the shopping cart page
 		$MainContent.="<form method='post' action='checkoutProcess.php'>";
