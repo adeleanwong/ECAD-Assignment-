@@ -14,7 +14,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 $stmt->close();
 $cartBtn= "<button type='submit' class='btn btn-danger'> Add to Cart</button>";
-$MainContent .= "<div class='card'>";
+$MainContent .= "<div class='card product-card'>";
 
 // To Do 1:  Display Product information. Starting ....
 while($row = $result->fetch_array())
@@ -23,13 +23,19 @@ while($row = $result->fetch_array())
     $MainContent .= "<span class='page-title'>$row[ProductTitle]</span>";
     $MainContent .= "</div>";
     
-    // start a new row 
-    $MainContent .= "<div class='row'>";
-    // left column - display the product's description 
+    // Display the product's description 
     $MainContent .= "<div class='card-body' style='margin:1.45rem;'>";
-    // display the product's image
+    // Display the product's image
+    $MainContent .= "<div class='row'>";
+    $MainContent .= "<div class='col'>";
+    // get image
     $img = "./Images/products/$row[ProductImage]";
     $MainContent .= "<p><img src='$img'/></p>";
+    $MainContent .= "</div>";
+    $MainContent .= "<div class='col'>";
+
+    
+    
     // Product's if on offer
     if($row["Offered"]==1){
         $MainContent .= "<h5 class='card-title' style='font-weight:bold; color:red;'>On Offer</h5>";    
@@ -38,10 +44,10 @@ while($row = $result->fetch_array())
 
     if($row["Quantity"]<1){
         $MainContent .="<h3>Out of Stock !</h3>";
-        $cartBtn ="<button type='submit' class='btn btn-danger' disabled>Add to Cart</p>";
+        $cartBtn ="<button type='submit' class='btn btn-danger' disabled>Add to Cart</button>";
     }
 
-    // Left column - display the product's Specification 
+    // Display the product's Specification 
     $qry = "SELECT s.SpecName, ps.SpecVal from productspec ps
             INNER JOIN specification s ON ps.SpecID=s.SpecID
             WHERE ps.ProductID=?
@@ -70,19 +76,23 @@ while($row = $result->fetch_array())
     }
     
     
+    
 }
 
 // To Do 1:  Ending ....
 
 // To Do 2:  Create a Form for adding the product to shopping cart. Starting ....
-$MainContent .="<form action='cartFunctions.php'method='post'>";
+$MainContent .="<form action='cartFunctions.php'method='post' style='margin:40px 0;'>";
 $MainContent .="<input type='hidden' name='action' value='add'/>";
 $MainContent .="<input type='hidden' name='product_id' value='$pid'/>";
 $MainContent .="Quantity: <input type='number' name='quantity' value='1' 
                 min='1' max='10' style='width:40px' required />";
+$MainContent .="<br>";
+$MainContent .="<br>";
 $MainContent .=$cartBtn;
 $MainContent .="</form>";
-$MainContent .="</div>";
+$MainContent .= "</div>";
+$MainContent .= "</div>";
 $MainContent .="</div>";
 $MainContent .= "</div>";
 

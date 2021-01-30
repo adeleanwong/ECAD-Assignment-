@@ -20,7 +20,7 @@ $MainContent .= "<label for='keywords'
                   class='col-sm-3 col-form-label'>Product Title:</label>";
 $MainContent .= "<div class='col-sm-6'>";
 $MainContent .= "<input class='form-control' name='keywords' id='keywords' 
-                  type='search' required/>";
+                  type='search'/>";
 $MainContent .= "</div>";
 
 $MainContent .= "<div class='col-sm-3'>";
@@ -127,7 +127,7 @@ if (isset($_GET['keywords']) && (isset($_GET['num1']) || isset($_GET['num2']) ||
 
          // Content
          $MainContent .= "<img class='card-img-top' src='$img' alt='Product Image'>"; 
-         $MainContent .= "<div class='card-body'>"; //67% of row width
+         $MainContent .= "<div class='card-body' style='text-align: center;'>"; //67% of row width
          $MainContent .= "<h5 class='cart-title'>$row[ProductTitle]</h5>";
          if ($row["Offered"]==1){
             $MainContent .= "<p class='card-text text-primary' style='font-size:1.2em;'><del style='opacity:0.5;'>$formattedPrice</del>$ $offeredPrice</p>";

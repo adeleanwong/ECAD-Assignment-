@@ -48,3 +48,6 @@ div.form-container{
 	padding-left: 0;
 	padding-right: 0;
 }
+div.product-card p{
+	margin: 40px 0;
+}
