@@ -30,7 +30,7 @@ while ($row = $result->fetch_array())
         $MainContent .= "<img class='card-img-top' src='$img' alt='Product Image'>"; 
         $MainContent .= "<div class='card-body'>"; //67% of row width
         $MainContent .= "<h5 class='cart-title'>$row[ProductTitle]</h5>";
-        $MainContent .= "<p class='card-text text-primary' style='font-size:1.2em;'><del style='opacity:0.5;'>$formattedPrice</del>$ $offeredPrice</p>";
+        $MainContent .= "<p class='card-text text-primary' style='font-size:1.2em;'><del style='opacity:0.5; font-size:0.8em;'>$formattedPrice</del>$ $offeredPrice</p>";
         $MainContent .= "<a href='$product' class='btn btn-danger'>Product Details</a>";
         $MainContent .= "</div>"; //end of card body 
         $MainContent .= "</div>"; //end of card
