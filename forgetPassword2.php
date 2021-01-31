@@ -26,7 +26,7 @@ if (isset($_POST['pwdAnswer']) && isset($_POST['eMail'])) {
         $stmt->close(); 
 
         $MainContent = "";
-        $MainContent = "<h3 style='text-align:center; color:blue;'>Your new password is '<b>$new_pwd</b>'. Please change your password once you have logged in.</h3>";
+        $MainContent = "<h3 style='text-align:center; color:green;'>Your new password is '<b>$new_pwd</b>'. Please change your password once you have logged in.</h3>";
     }
 
     else{

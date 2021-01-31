@@ -21,7 +21,7 @@ $conn->close();
 
 $MainContent .= "<div class='form-group row'>";       
 $MainContent .= "<div class='col-sm-9 offset-sm-3'>";
-$MainContent = "<h3 style='text-align:center; color:blue'>Profile updated!</h3>";
+$MainContent = "<h3 style='text-align:center; color:green'>Profile updated!</h3>";
 $MainContent .= "</div>";
 $MainContent .= "</div>";
 

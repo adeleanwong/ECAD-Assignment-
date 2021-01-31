@@ -36,9 +36,9 @@ if ($stmt->execute()) { // SQL statement executed successfully
         $_SESSION["ShopperID"] = $row["ShopperID"];
     }
     // Display successful message and shopper ID
-    $MainContent = "<h3 style='text-align:center; color:blue'>Registration successful</h3>";   
+    $MainContent = "<h3 style='text-align:center; color:green'>Registration successful</h3><br>";   
     //$MainContent .= "Registration successful!<br/>";
-    //$MainContent .= "Your ShopperID is $_SESSION[ShopperID]<br/>";
+    $MainContent .= "<h3 style='text-align:center; color:green'>Your ShopperID is $_SESSION[ShopperID]</h3>";
     // Save the shopper name in a session variable
     $_SESSION["ShopperName"] = $name;
 }

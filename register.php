@@ -161,6 +161,7 @@ function validateForm()
             if (document.register.email.value == existingEmail[i]){
                 //console.log("Found existing email matched")
                 var errorText = "Email already exist, please enter another email!";
+                document.getElementById('emailInfo').style.color = "red";
                 document.getElementById('emailInfo').innerHTML = errorText;
                 return false;
             }
@@ -203,6 +204,7 @@ function checkEmail(){
             if (document.register.email.value == existingEmail[i]){
                 console.log("Found existing email matched")
                 var errorText = "Email already exist, please enter another email!";
+                document.getElementById('emailInfo').style.color = "red";
                 document.getElementById('emailInfo').innerHTML = errorText;
                 flag = false;
                 return;
