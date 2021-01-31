@@ -17,7 +17,11 @@ function validateForm()
 // Detect the current session
 session_start();
 // To Do 1: Check if user logged in 
-
+if (! isset($_SESSION["ShopperID"])) {
+	// redirect to login page if the session variable shopperid is not set
+	header ("Location: login.php");
+	exit;
+}
 // End of To Do 1
 
 $MainContent = "<div style='width:80%; margin:auto;'>";
