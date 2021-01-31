@@ -143,7 +143,7 @@ $MainContent .= "</div>";
 
 $MainContent .= "<div class='form-group row'>";       
 $MainContent .= "<div class='col-sm-9 offset-sm-3'>";
-$MainContent .= "<button type='submit'>Register</button>";
+$MainContent .= "<button type='submit' class='btn btn-danger'>Register</button>";
 $MainContent .= "</div>";
 $MainContent .= "</div>";
 

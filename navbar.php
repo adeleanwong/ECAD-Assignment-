@@ -44,7 +44,7 @@ if(isset($_SESSION["ShopperName"])) {
     <div class="p-2 flex-grow-1 bd-highlight">
         <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link"href="category.php">Product Categories</a></li>
+            <a class="nav-link" href="category.php">Product Categories</a></li>
         <li class="nav-item">
             <a class="nav-link" href="search.php">Product Search</a></li>
         <li class="nav-item">

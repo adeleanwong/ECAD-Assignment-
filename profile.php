@@ -122,22 +122,15 @@ $MainContent .= "<label class='col-sm-3 col-form-label' for='email'>
 $MainContent .= "<div class='col-sm-9'>";
 $MainContent .= "<input class='form-control' name='email' id='email' 
                   type='email' value='$email'/>";
+$MainContent .= "<p> <a href='changePassword.php'>Change Password</a></p>";
 $MainContent .= "<div id='emailInfo'>";
 $MainContent .= "</div>";
 $MainContent .= "</div>";
 $MainContent .= "</div>";
 
-$MainContent .= "<form method='post' action='changePassword.php'>
-                <div class='form-group row'>   
-                <div class='col-sm-9 offset-sm-3'>
-                <button type='submit' onclick=document.location.href='changePassword.php'>Change Password</button>
-                </form>
-                </div>
-                </div>";
-
 $MainContent .= "<div class='form-group row'>";       
 $MainContent .= "<div class='col-sm-9 offset-sm-3'>";
-$MainContent .= "<button type='submit'>Update</button>";
+$MainContent .= "<button type='submit' class='btn btn-danger'>Update</button>";
 $MainContent .= "</div>";
 $MainContent .= "</div>";
 

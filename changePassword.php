@@ -46,7 +46,7 @@ $MainContent .= "</div>";
 $MainContent .= "</div>";
 $MainContent .= "<div class='form-group row'>";       
 $MainContent .= "<div class='col-sm-9 offset-sm-3'>";
-$MainContent .= "<button type='submit'>Update</button>";
+$MainContent .= "<button type='submit' class='btn btn-danger'>Update</button>";
 $MainContent .= "</div>";
 $MainContent .= "</div>";
 $MainContent .= "</form>";
