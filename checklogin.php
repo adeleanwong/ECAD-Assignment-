@@ -20,10 +20,17 @@ $stmt->close();
 
 if ($result1->num_rows > 0){
 	$row1 = $result1->fetch_array();
+
+	$activeStatus = $row1["ActiveStatus"];
 	// Get the hashed password from database
 	$hashed_pwd = $row1["Password"];
-
+	
 	// Verifies that a password matches a hash
+	if ($activeStatus == 0){
+		$MainContent = "<h3 style='text-align:center; color:red'>You have been logged out by the system admin due to your unwelcomed or illegal actions.</h3>";
+		include("MasterTemplate.php");
+		exit;
+	}
 	if ((password_verify($pwd, $hashed_pwd) == true) || ($pwd == $row1["Password"])){ // has the OR condition because not all recorded passwords are hashed
 		 $checkLogin = TRUE;
 		 // Save user's info in session variables 
