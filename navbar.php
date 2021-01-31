@@ -48,7 +48,10 @@ if(isset($_SESSION["ShopperName"])) {
         <li class="nav-item">
             <a class="nav-link" href="search.php">Product Search</a></li>
         <li class="nav-item">
+            <a class="nav-link" href="viewFeedback.php">Feedback</a></li>
+        <li class="nav-item">
             <a class="nav-link" href="shoppingCart.php">Shopping Cart</a></li>
+        
     </ul>
     </div>
     <div class="p-2 bd-highlight">

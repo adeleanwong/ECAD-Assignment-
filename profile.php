@@ -90,7 +90,7 @@ $MainContent .= "</div>";
 $MainContent .= "<div class='form-group row'>";
 $MainContent .= "<label class='col-sm-3 col-form-label' for='birthDate'>Birth Date:</label>";
 $MainContent .= "<div class='col-sm-9'>";
-$MainContent .= "<input type='date' name='birthDate' id='birthDate' value='$birthDate' />";
+$MainContent .= "<input type='date' class='form-control' name='birthDate' id='birthDate' value='$birthDate' />";
 $MainContent .= "</div>";
 $MainContent .= "</div>";
 

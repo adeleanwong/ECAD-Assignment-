@@ -36,13 +36,14 @@ if ($stmt->execute()) { // SQL statement executed successfully
         $_SESSION["ShopperID"] = $row["ShopperID"];
     }
     // Display successful message and shopper ID
-    $MainContent .= "Registration successful!<br/>";
-    $MainContent .= "Your ShopperID is $_SESSION[ShopperID]<br/>";
+    $MainContent = "<h3 style='text-align:center; color:blue'>Registration successful</h3>";   
+    //$MainContent .= "Registration successful!<br/>";
+    //$MainContent .= "Your ShopperID is $_SESSION[ShopperID]<br/>";
     // Save the shopper name in a session variable
     $_SESSION["ShopperName"] = $name;
 }
 else { // Display error message
-    $MainContent .= "<h3 style='color:red'>Error in inserting recrod</h3>";
+    $MainContent .= "<h3 style='text-align:center; color:red'>Error in inserting recrod</h3>";
 }
 
 // Release the resoruce allocated for prepared statement 
