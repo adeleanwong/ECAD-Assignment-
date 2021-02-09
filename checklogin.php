@@ -60,7 +60,7 @@ if ($result1->num_rows > 0){
 		$_SESSION["NumCartItem"] = $row["count(*)"];
 	}
 	else{
-		$MainContent = "<h3 style='color:red'>Invalid Login Credentials - <br/>
+		$MainContent = "<h3 style='color:red; text-align:center'>Invalid Login Credentials - <br/>
 		password is incorrect!</h3>";
 
 		/* DEBUG
